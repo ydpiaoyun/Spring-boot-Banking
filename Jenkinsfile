@@ -19,7 +19,8 @@ pipeline {
     }
     stage('push docker image'){
       steps {
-        echo 'push docker image'
+        sh '''docker push registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}
+            docker rm -f registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}'''
       }
     }
   }
