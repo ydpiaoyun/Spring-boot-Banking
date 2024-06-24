@@ -18,9 +18,13 @@ pipeline {
       }
     }
     stage('push docker image'){
+      environment {
+        ALIYUN_CREDS = credentials('aliyun-image')
+      }
       steps {
-        sh '''docker push registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}
-          docker rmi registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}'''
+        sh '''docker login --username=$ALIYUN_CREDS_USR --password=$ALIYUN_CREDS_PSW registry.cn-hangzhou.aliyuncs.com
+        docker push registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}
+        docker rmi registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}'''
       }
     }
   }
