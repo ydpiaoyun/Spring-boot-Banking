@@ -14,7 +14,7 @@ pipeline {
     }
     stage('build docker image'){
       steps {
-         echo 'docker image'
+         sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag} .'
       }
     }
     stage('push docker image'){
