@@ -14,11 +14,12 @@ pipeline {
     }
     stage('build docker image'){
       steps {
-         
+         echo 'docker image'
       }
     }
     stage('push docker image'){
       steps {
+        echo 'push docker image'
       }
     }
   }
