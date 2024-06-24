@@ -20,7 +20,7 @@ pipeline {
     stage('push docker image'){
       steps {
         sh '''docker push registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}
-            docker rm -f registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}'''
+          docker rmi registry.cn-hangzhou.aliyuncs.com/piaoyun/demo:${tag}'''
       }
     }
   }
